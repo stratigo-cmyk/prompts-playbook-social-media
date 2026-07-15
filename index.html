@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompts Playbook — Playbook 01</title>
+<meta name="description" content="Prompts Playbook 01 — architecture, interior, landscape and material prompting. By Eduardo Mitelman.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3EEE4; --ink:#191714; --accent:#E8385A; --accent-dark:#c72d4c;
+    --muted:#6b6459; --muted-2:#8a8276; --card:#ffffff;
+    --stage-w:1920; --stage-h:1080;
+  }
+  *{ box-sizing:border-box; font-family:'Heebo',sans-serif; }
+  html,body{ margin:0; padding:0; height:100%; background:#0d0c0b; overflow:hidden; }
+  .mono{ font-family:'IBM Plex Mono',monospace !important; }
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ color:var(--accent-dark); text-decoration:underline; }
+  ::selection{ background:var(--accent); color:#fff; }
+  button{ font-family:'Heebo',sans-serif; }
+
+  /* ---------- Deck viewport & scaling ---------- */
+  #deck{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
+  #stage-wrap{ position:relative; flex:0 0 auto; width:1920px; height:1080px; transform-origin:center center; }
+  .slide{
+    position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .45s ease;
+  }
+  .slide.active{ opacity:1; visibility:visible; pointer-events:auto; }
+  .slide > .slide-inner{ width:100%; height:100%; }
+
+  /* ---------- Reusable slide primitives (mirror source deck) ---------- */
+  .eyebrow-row{ display:flex; align-items:center; gap:16px; }
+  .tick{ width:44px; height:2px; background:var(--accent); }
+  .eyebrow{ font-size:24px; font-weight:700; letter-spacing:0.08em; color:var(--ink); text-transform:uppercase; }
+  .kicker{ font-size:24px; font-weight:700; letter-spacing:0.08em; color:var(--accent); text-transform:uppercase; }
+  .h-title{ font-size:56px; color:var(--ink); font-weight:700; margin:8px 0 24px; }
+  .prompt-grid-2{ flex:1; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .card{
+    background:var(--card); border-radius:4px; padding:26px 30px;
+    border:1px solid rgba(25,23,20,0.1);
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .card .p{ font-size:24px; line-height:1.5; color:var(--ink); margin:0; }
+  .card .p b{ color:var(--accent); }
+  .copy-btn{
+    align-self:flex-start; margin-top:16px; background:var(--ink); color:var(--paper);
+    border:none; border-radius:100px; padding:10px 24px; font-size:24px; cursor:pointer;
+    transition:background .2s ease, transform .1s ease;
+  }
+  .copy-btn:hover{ background:var(--accent); }
+  .copy-btn:active{ transform:scale(.96); }
+  .copy-btn.copied{ background:#2f8f5b; }
+
+  /* ---------- Section divider big numeral ---------- */
+  .section-num{ font-size:280px; color:#252119; font-weight:700; position:absolute; top:0; right:60px; line-height:1; }
+
+  /* ---------- HUD (chrome outside the 16:9 stage) ---------- */
+  #hud{ position:fixed; left:0; right:0; bottom:0; z-index:40; pointer-events:none; }
+  #progress{ height:4px; background:rgba(243,238,228,0.14); width:100%; }
+  #progress > span{ display:block; height:100%; width:0; background:var(--accent); transition:width .35s ease; }
+  #controls{
+    pointer-events:auto; display:flex; align-items:center; gap:14px;
+    padding:14px 22px; color:#d8d2c6; font-size:15px;
+    background:linear-gradient(0deg, rgba(13,12,11,0.85), rgba(13,12,11,0));
+  }
+  .ctrl{
+    pointer-events:auto; background:rgba(255,255,255,0.08); color:#F3EEE4; border:1px solid rgba(255,255,255,0.14);
+    border-radius:100px; padding:8px 16px; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
+    transition:background .18s ease, border-color .18s ease;
+  }
+  .ctrl:hover{ background:rgba(232,56,90,0.9); border-color:transparent; }
+  .ctrl svg{ width:15px; height:15px; fill:currentColor; }
+  #counter{ font-variant-numeric:tabular-nums; letter-spacing:0.04em; color:#a8a196; }
+  #counter b{ color:#F3EEE4; font-weight:600; }
+  .spacer{ flex:1; }
+  #slide-label{ color:#a8a196; font-size:14px; max-width:360px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+  /* ---------- Table of contents overlay ---------- */
+  #toc{
+    position:fixed; inset:0; z-index:60; background:rgba(13,12,11,0.96);
+    display:none; flex-direction:column; padding:64px clamp(24px,6vw,120px);
+    overflow-y:auto;
+  }
+  #toc.open{ display:flex; }
+  #toc h2{ color:#F3EEE4; font-size:28px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin:0 0 8px; }
+  #toc .sub{ color:#8a8276; font-size:16px; margin:0 0 40px; }
+  #toc-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px; }
+  .toc-item{
+    text-align:left; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:18px 20px; cursor:pointer; color:#F3EEE4; display:flex; align-items:center; gap:18px;
+    transition:background .16s ease, border-color .16s ease;
+  }
+  .toc-item:hover{ background:rgba(232,56,90,0.14); border-color:rgba(232,56,90,0.5); }
+  .toc-item.current{ border-color:var(--accent); background:rgba(232,56,90,0.12); }
+  .toc-item .n{ font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:18px; font-weight:600; min-width:34px; }
+  .toc-item .t{ font-size:17px; font-weight:500; }
+
+  /* ---------- Speaker notes ---------- */
+  #notes{
+    position:fixed; left:0; right:0; bottom:56px; z-index:50; display:none;
+    padding:18px 24px; color:#e7e1d5; font-size:17px; line-height:1.5;
+    background:rgba(13,12,11,0.92); border-top:1px solid rgba(232,56,90,0.4);
+  }
+  #notes.show{ display:block; }
+  #notes b{ color:var(--accent); text-transform:uppercase; letter-spacing:0.08em; font-size:13px; display:block; margin-bottom:6px; }
+
+  /* copy toast */
+  #toast{
+    position:fixed; top:24px; left:50%; transform:translateX(-50%) translateY(-20px);
+    z-index:70; background:var(--ink); color:var(--paper); padding:12px 22px; border-radius:100px;
+    font-size:15px; opacity:0; transition:opacity .25s ease, transform .25s ease; pointer-events:none;
+    border:1px solid rgba(232,56,90,0.5);
+  }
+  #toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  .hint{ color:#6b6459; font-size:13px; }
+  @media (max-width:640px){ #slide-label,.hint{ display:none; } }
+</style>
+</head>
+<body>
+<div id="deck">
+  <div id="stage-wrap"><!-- slides injected here --></div>
+</div>
+
+<div id="notes"></div>
+
+<div id="hud">
+  <div id="progress"><span></span></div>
+  <div id="controls">
+    <button class="ctrl" id="btn-toc" title="Contents (C)">
+      <svg viewBox="0 0 24 24"><path d="M3 5h18v2H3zM3 11h18v2H3zM3 17h18v2H3z"/></svg> Contents
+    </button>
+    <button class="ctrl" id="btn-prev" title="Previous (←)">
+      <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6z"/></svg>
+    </button>
+    <span id="counter"><b>01</b> / 19</span>
+    <button class="ctrl" id="btn-next" title="Next (→)">
+      <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6z"/></svg>
+    </button>
+    <span id="slide-label"></span>
+    <span class="spacer"></span>
+    <span class="hint">← → navigate · N notes · F fullscreen · C contents</span>
+    <button class="ctrl" id="btn-notes" title="Speaker notes (N)">Notes</button>
+    <button class="ctrl" id="btn-full" title="Fullscreen (F)">
+      <svg viewBox="0 0 24 24"><path d="M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM4 14h2v4h4v2H4v-6zm14 0h2v6h-6v-2h4v-4z"/></svg> Fullscreen
+    </button>
+  </div>
+</div>
+
+<div id="toc">
+  <h2>Prompts Playbook — Contents</h2>
+  <p class="sub">Click any slide to jump. Press C or Esc to close.</p>
+  <div id="toc-grid"></div>
+</div>
+
+<div id="toast">Copied ✓</div>
+
+<script src="deck.js"></script>
+</body>
+</html>
