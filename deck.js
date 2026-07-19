@@ -271,20 +271,13 @@ function promptCardWithEnglish(hebrewPrompt, englishPromptId) {
   const en = ENGLISH_PROMPTS[englishPromptId - 1];
   const escHe = hebrewPrompt.replace(/"/g, "&quot;");
   const escEn = en.prompt.replace(/"/g, "&quot;");
-  const toggleId = `english-${englishPromptId}`;
   return `
     <div class="card" style="flex-direction:column; justify-content:space-between;">
-      <div>
-        <p class="mono p" style="direction:rtl; text-align:right;">${hebrewPrompt}</p>
-        <button class="mono english-toggle" type="button" data-toggle-id="${toggleId}" aria-expanded="false" aria-controls="${toggleId}" style="align-self:flex-start; margin-top:16px; background:#191714; color:#F3EEE4; padding:8px 16px; border:none; border-radius:4px; cursor:pointer; font-size:14px;">English</button>
+      <p class="mono p" style="direction:rtl; text-align:right;">${hebrewPrompt}</p>
+      <div style="display:flex; gap:8px; align-self:flex-start; margin-top:16px;">
+        <button class="mono copy-english" type="button" data-prompt-en="${escEn}" style="background:#191714; color:#F3EEE4; padding:8px 16px; border:none; border-radius:4px; cursor:pointer; font-size:14px;">English</button>
+        <button class="mono copy-btn" data-prompt="${escHe}">העתקה</button>
       </div>
-      <div id="${toggleId}" class="english-prompt" hidden style="margin-top:20px; padding-top:20px; border-top:1px solid rgba(25,23,20,0.15); direction:ltr; text-align:left;">
-        <h4 style="font-size:16px; font-weight:600; color:#191714; margin:0 0 12px;">${en.title}</h4>
-        <pre style="margin:0 0 16px; white-space:pre-wrap; word-wrap:break-word;"><code class="mono p" style="color:#191714; direction:ltr;">${en.prompt}</code></pre>
-        <button class="mono copy-english" type="button" data-prompt-en="${escEn}" aria-label="Copy English prompt" style="background:#191714; color:#F3EEE4; padding:8px 16px; border:none; border-radius:4px; cursor:pointer; font-size:14px;">Copy English Prompt</button>
-        <span class="copy-status-en" aria-live="polite" style="margin-left:12px; color:#191714; font-weight:600;"></span>
-      </div>
-      <button class="mono copy-btn" data-prompt="${escHe}" style="align-self:flex-start; margin-top:16px;">העתקה</button>
     </div>
   `;
 }
@@ -295,7 +288,7 @@ const SLIDES = [
 {
   label: "Cover", screen: "01",
   notes: "Welcome. Playbook 02: Social Media Managers.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; display:flex;"><div style="flex:1.1; padding:100px 0 90px 100px; display:flex; flex-direction:column; justify-content:space-between;"><div style="display:flex; align-items:center; gap:16px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714; text-transform:uppercase;">Playbook 02</span></div><div><div style="font-size:34px; color:#6b6459; margin-bottom:20px; direction:rtl; text-align:left; margin-left:8px;" dir="rtl">חוברת סושיאל מדיה</div><h1 style="font-size:132px; line-height:0.98; font-weight:700; color:#191714; margin:0; letter-spacing:-0.02em;">Prompts<br>for Social</h1><div style="font-size:36px; color:#3d3830; margin-top:36px; max-width:760px; font-weight:400;" dir="rtl">פרומפטים להצלחה בעולם האינסטגרם, יוטיוב, טיקטוק וניהול תוכן</div></div><div style="display:flex; align-items:baseline; gap:24px;"><span style="font-size:30px; font-weight:600; color:#191714;">Eduardo Mitelman</span><a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="mono" style="font-size:26px; color:#8a8276;">@neoverseboy</a></div></div><div style="flex:0.9; position:relative; overflow:hidden;"><img src="assets/cover-generic.jpg" alt="Social media growth" style="width:100%; height:100%; object-fit:cover; display:block;"></div></div>`
+  html: `<div class="slide-inner" style="background:#F3EEE4; display:flex;"><div style="flex:1.1; padding:100px 0 90px 100px; display:flex; flex-direction:column; justify-content:space-between;"><div style="display:flex; align-items:center; gap:16px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714; text-transform:uppercase;">Playbook 02</span></div><div><div style="font-size:34px; color:#6b6459; margin-bottom:20px; direction:rtl; text-align:left; margin-left:8px;" dir="rtl">חוברת סושיאל מדיה</div><h1 style="font-size:132px; line-height:0.98; font-weight:700; color:#191714; margin:0; letter-spacing:-0.02em;">Prompts<br>for Social</h1><div style="font-size:36px; color:#3d3830; margin-top:36px; max-width:760px; font-weight:400;" dir="rtl">פרומפטים להתנסות</div></div><div style="display:flex; align-items:baseline; gap:24px;"><span style="font-size:30px; font-weight:600; color:#191714;">Eduardo Mitelman</span><a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="mono" style="font-size:26px; color:#8a8276;">@neoverseboy</a></div></div><div style="flex:0.9; position:relative; overflow:hidden;"><img src="assets/cover.png" alt="Social media growth" style="width:100%; height:100%; object-fit:cover; display:block;"></div></div>`
 },
 
 /* 02 — Contents */
@@ -315,8 +308,8 @@ const SLIDES = [
 /* 04 — Platforms */
 {
   label: "Platforms", screen: "04",
-  notes: "5 platforms to master.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:43px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714;" dir="rtl">פלטפורמות</span></div><div style="display:flex; flex-wrap:wrap; gap:24px; max-width:1500px;">${["Instagram","YouTube","TikTok","LinkedIn","Threads"].map(t => `<div style="background:#191714; color:#F3EEE4; font-size:34px; font-weight:600; padding:24px 44px; border-radius:100px;">${t}</div>`).join("")}</div></div>`
+  notes: "Tools for prompt experimentation.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:43px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714;" dir="rtl">כלים</span></div><div style="display:flex; flex-wrap:wrap; gap:24px; max-width:1500px;">${["Perplexity","NotebookLM","ChatGPT","Gemini","Claude Code","<span style=\"color:red\">Higgsfield</span>","Seedance","Nano Banana","Gemini Omni"].map(t => `<div style="background:#191714; color:#F3EEE4; font-size:34px; font-weight:600; padding:24px 44px; border-radius:100px;">${t}</div>`).join("")}</div></div>`
 },
 
 /* 05 — Process */
@@ -659,15 +652,15 @@ const SLIDES = [
     showToast._t = setTimeout(() => toast.classList.remove("show"), 1400);
   }
   wrap.addEventListener("click", (e) => {
-    // Handle Hebrew copy button
-    const copyBtn = e.target.closest(".copy-btn");
-    if (copyBtn) {
-      const text = copyBtn.dataset.prompt;
+    // Handle English copy button
+    const copyEnBtn = e.target.closest(".copy-english");
+    if (copyEnBtn) {
+      const text = copyEnBtn.dataset.promptEn;
       const done = () => {
-        copyBtn.textContent = "הועתק ✓";
-        copyBtn.classList.add("copied");
-        showToast("הועתק");
-        setTimeout(() => { copyBtn.textContent = "העתקה"; copyBtn.classList.remove("copied"); }, 1500);
+        copyEnBtn.textContent = "Copied ✓";
+        copyEnBtn.classList.add("copied");
+        showToast("Copied");
+        setTimeout(() => { copyEnBtn.textContent = "English"; copyEnBtn.classList.remove("copied"); }, 1500);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
@@ -677,28 +670,15 @@ const SLIDES = [
       return;
     }
 
-    // Handle English toggle button
-    const toggleBtn = e.target.closest(".english-toggle");
-    if (toggleBtn) {
-      const toggleId = toggleBtn.dataset.toggleId;
-      const englishSection = document.getElementById(toggleId);
-      if (englishSection) {
-        const isHidden = englishSection.hidden;
-        englishSection.hidden = !isHidden;
-        toggleBtn.setAttribute("aria-expanded", isHidden);
-        toggleBtn.textContent = isHidden ? "Hide English" : "English";
-      }
-      return;
-    }
-
-    // Handle English copy button
-    const copyEnBtn = e.target.closest(".copy-english");
-    if (copyEnBtn) {
-      const text = copyEnBtn.dataset.promptEn;
-      const statusEl = copyEnBtn.closest(".english-prompt").querySelector(".copy-status-en");
+    // Handle Hebrew copy button
+    const copyBtn = e.target.closest(".copy-btn");
+    if (copyBtn) {
+      const text = copyBtn.dataset.prompt;
       const done = () => {
-        statusEl.textContent = "Copied ✓";
-        setTimeout(() => { statusEl.textContent = ""; }, 2000);
+        copyBtn.textContent = "הועתק ✓";
+        copyBtn.classList.add("copied");
+        showToast("הועתק");
+        setTimeout(() => { copyBtn.textContent = "העתקה"; copyBtn.classList.remove("copied"); }, 1500);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
