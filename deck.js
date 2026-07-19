@@ -426,6 +426,25 @@ const SLIDES = [
   html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">03</span><div style="direction:rtl; text-align:right;"><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px; justify-content:flex-end;"><span style="font-size:26px; font-weight:700; letter-spacing:0.1em; color:#8a8276; text-transform:uppercase;">חלק 03</span><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0;">תובנה</h1></div></div>`
 },
 
+/* 13 — Prompt 5 */
+{
+  label: "Prompt 5 — תובנות", screen: "13",
+  notes: "Distill strategic insights.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 5</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">זיקוק תובנות אסטרטגיות</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;">${promptCardWithEnglish(`בהתבסס על המחקר, אפיון הקהל והמתח שנבחר, נסח תובנות אסטרטגיות.
+
+תובנה צריכה להסביר מדוע הקהל חושב, מרגיש או פועל כפי שהוא פועל.
+
+לכל תובנה הצג:
+1. הממצא שעליו היא מבוססת
+2. מה המשמעות של הממצא
+3. מה הקהל אומר
+4. מה ייתכן שהוא באמת צריך
+5. מה המותג יכול להבין מכך
+6. איזו הנחה עדיין דורשת בדיקה
+
+נסח 5 תובנות במשפט אחד כל אחת. אל תכתוב עדיין מסרים. בחר את התובנה החזקה ביותר.`, 5)}</div></div></div>`
+},
+
 /* 14 — Prompt 6 */
 {
   label: "Prompt 6 — פערים", screen: "14",
@@ -552,25 +571,6 @@ const SLIDES = [
 לאחר מכן שפר רק את ההוקים החלשים.
 
 שמור על המסר המקורי, שפת המותג, בהירות, סקרנות ואמינות.`, 10)}</div></div></div>`
-},
-
-/* 20 — Prompt 5 (Moved to End) */
-{
-  label: "Prompt 5 — תובנות", screen: "13",
-  notes: "Distill strategic insights.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 5</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">זיקוק תובנות אסטרטגיות</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;">${promptCardWithEnglish(`בהתבסס על המחקר, אפיון הקהל והמתח שנבחר, נסח תובנות אסטרטגיות.
-
-תובנה צריכה להסביר מדוע הקהל חושב, מרגיש או פועל כפי שהוא פועל.
-
-לכל תובנה הצג:
-1. הממצא שעליו היא מבוססת
-2. מה המשמעות של הממצא
-3. מה הקהל אומר
-4. מה ייתכן שהוא באמת צריך
-5. מה המותג יכול להבין מכך
-6. איזו הנחה עדיין דורשת בדיקה
-
-נסח 5 תובנות במשפט אחד כל אחת. אל תכתוב עדיין מסרים. בחר את התובנה החזקה ביותר.`, 5)}</div></div></div>`
 }
 
 ];
