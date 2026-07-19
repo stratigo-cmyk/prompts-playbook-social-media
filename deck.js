@@ -1,17 +1,8 @@
-/* =====================================================================
-   Prompts Playbook — Social Media Managers
-   19 prompts for Instagram, YouTube, TikTok & content strategy
-   ===================================================================== */
-
 const INSTAGRAM_URL = "https://www.instagram.com/neoverseboy/";
 
-function promptCard(prompt, htmlBody, opts = {}) {
-  const span = opts.span ? `grid-column:${opts.span};` : "";
-  const row = opts.row ? `grid-row:${opts.row};` : "";
-  const align = opts.center ? "align-items:center;" : "flex-direction:column; justify-content:space-between;";
-  const btnMargin = opts.center ? "flex-shrink:0; margin-left:24px;" : "align-self:flex-start; margin-top:16px;";
+function promptCard(prompt, htmlBody) {
   const esc = prompt.replace(/"/g, "&quot;");
-  return `<div class="card" style="${span}${row}${align}"><p class="mono p">${htmlBody}</p><button class="mono copy-btn" data-prompt="${esc}" style="${btnMargin}">Copy</button></div>`;
+  return `<div class="card" style="flex-direction:column; justify-content:space-between;"><p class="mono p" style="direction:rtl; text-align:right;">${htmlBody}</p><button class="mono copy-btn" data-prompt="${esc}">העתקה</button></div>`;
 }
 
 const SLIDES = [
@@ -19,140 +10,294 @@ const SLIDES = [
 /* 01 — Cover */
 {
   label: "Cover", screen: "01",
-  notes: "Welcome. This is Playbook 02: Social Media Managers. Focus on Instagram, YouTube, content strategy & growth.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; display:flex;"><div style="flex:1.1; padding:100px 0 90px 100px; display:flex; flex-direction:column; justify-content:space-between;"><div style="display:flex; align-items:center; gap:16px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714; text-transform:uppercase;">Playbook 02</span></div><div><div style="font-size:34px; color:#6b6459; margin-bottom:20px; direction:rtl; text-align:left; margin-left:8px;" dir="rtl">חוברת סושיאל מדיה</div><h1 style="font-size:132px; line-height:0.98; font-weight:700; color:#191714; margin:0; letter-spacing:-0.02em;">Prompts<br>for Social</h1><div style="font-size:36px; color:#3d3830; margin-top:36px; max-width:760px; font-weight:400;">פרומפטים להצלחה בעולם האינסטגרם, יוטיוב, טיקטוק וניהול תוכן</div></div><div style="display:flex; align-items:baseline; gap:24px;"><span style="font-size:30px; font-weight:600; color:#191714;">Eduardo Mitelman</span><a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="mono" style="font-size:26px; color:#8a8276;">@neoverseboy</a></div></div><div style="flex:0.9; position:relative; overflow:hidden;"><img src="assets/cover-generic.jpg" alt="Social media growth" style="width:100%; height:100%; object-fit:cover; display:block;"></div></div>`
+  notes: "Welcome. Playbook 02: Social Media Managers.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; display:flex;"><div style="flex:1.1; padding:100px 0 90px 100px; display:flex; flex-direction:column; justify-content:space-between;"><div style="display:flex; align-items:center; gap:16px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714; text-transform:uppercase;">Playbook 02</span></div><div><div style="font-size:34px; color:#6b6459; margin-bottom:20px; direction:rtl; text-align:left; margin-left:8px;" dir="rtl">חוברת סושיאל מדיה</div><h1 style="font-size:132px; line-height:0.98; font-weight:700; color:#191714; margin:0; letter-spacing:-0.02em;">Prompts<br>for Social</h1><div style="font-size:36px; color:#3d3830; margin-top:36px; max-width:760px; font-weight:400;" dir="rtl">פרומפטים להצלחה בעולם האינסטגרם, יוטיוב, טיקטוק וניהול תוכן</div></div><div style="display:flex; align-items:baseline; gap:24px;"><span style="font-size:30px; font-weight:600; color:#191714;">Eduardo Mitelman</span><a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="mono" style="font-size:26px; color:#8a8276;">@neoverseboy</a></div></div><div style="flex:0.9; position:relative; overflow:hidden;"><img src="assets/cover-generic.jpg" alt="Social media growth" style="width:100%; height:100%; object-fit:cover; display:block;"></div></div>`
 },
 
 /* 02 — Contents */
 {
   label: "Contents", screen: "02",
-  notes: "4 sections: Research, Instagram, YouTube, Growth Systems.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:56px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714; text-transform:uppercase;">תוכן עניינים</span></div><div style="display:grid; grid-template-columns:1fr 1fr; gap:0 80px;">${[["01","Research & Strategy"],["02","Instagram Growth"],["03","YouTube"],["04","Growth Systems"]].map(([n,t]) => `<div style="display:flex; align-items:flex-end; gap:32px; padding:32px 0; border-bottom:1px solid rgba(25,23,20,0.15);"><span class="mono" style="font-size:40px; color:#E8385A; font-weight:600;">${n}</span><span style="font-size:44px; font-weight:600; color:#191714;">${t}</span></div>`).join("")}</div><div style="margin-top:64px; font-size:30px; color:#6b6459; direction:rtl; text-align:right;" dir="rtl">פרומפטים להצלחה בסושיאל מדיה, בניית תוכן ויצירת קהל.</div></div>`
+  notes: "4 sections: Research, Audience, Tension, Insight, Message, Hooks.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:56px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714; text-transform:uppercase;" dir="rtl">תוכן עניינים</span></div><div style="display:grid; grid-template-columns:1fr 1fr; gap:0 80px; direction:rtl;" dir="rtl">${[["01","מחקר וקהל"],["02","מתח וחסמים"],["03","תובנה"],["04","מסר והוקים"]].map(([n,t]) => `<div style="display:flex; align-items:flex-end; gap:32px; padding:32px 0; border-bottom:1px solid rgba(25,23,20,0.15); text-align:right;"><span class="mono" style="font-size:40px; color:#E8385A; font-weight:600;">${n}</span><span style="font-size:44px; font-weight:600; color:#191714;">${t}</span></div>`).join("")}</div></div>`
 },
 
 /* 03 — About */
 {
   label: "About the Instructor", screen: "03",
-  notes: "Eduardo Mitelman, 24 years teaching design, branding, AI.",
-  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; gap:100px; align-items:center;"><div style="flex:1.3;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#F3EEE4; text-transform:uppercase;">מי אני</span></div><h1 style="font-size:72px; color:#F3EEE4; font-weight:700; margin:0 0 32px;">אדוארדו מיטלמן</h1><p style="font-size:32px; color:#d8d2c6; line-height:1.5; max-width:900px; margin:0 0 28px;">עיצוב, מיתוג, AI, ניהול תוכן סושיאל ודיגיטלי. בעלים של Stratigo</p><p style="font-size:32px; color:#d8d2c6; line-height:1.5; max-width:900px; margin:0;">24 שנים בהוראה בבצלאל, אוניברסיטת חיפה, ואוניברסיטת אריאל. 14 פרסי עיצוב בינלאומיים</p></div><div style="flex:0.6; display:flex; flex-direction:column; align-items:center; gap:28px;"><div style="background:#F3EEE4; padding:28px; border-radius:4px;"><img src="assets/qr-code.png" alt="Instagram QR" style="width:280px; height:280px; display:block; image-rendering:pixelated;"></div><a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="mono" style="font-size:26px; color:#F3EEE4;">@neoverseboy</a></div></div>`
+  notes: "Eduardo Mitelman, 24 years teaching design.",
+  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; gap:100px; align-items:center;"><div style="flex:1.3;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#F3EEE4; text-transform:uppercase;" dir="rtl">מי אני</span></div><h1 style="font-size:72px; color:#F3EEE4; font-weight:700; margin:0 0 32px; direction:rtl; text-align:right;" dir="rtl">אדוארדו מיטלמן</h1><p style="font-size:32px; color:#d8d2c6; line-height:1.5; max-width:900px; margin:0 0 28px; direction:rtl; text-align:right;" dir="rtl">עיצוב, מיתוג, AI, ניהול תוכן סושיאל ודיגיטלי. בעלים של Stratigo</p><p style="font-size:32px; color:#d8d2c6; line-height:1.5; max-width:900px; margin:0; direction:rtl; text-align:right;" dir="rtl">24 שנים בהוראה בבצלאל, אוניברסיטת חיפה, ואוניברסיטת אריאל. 14 פרסי עיצוב בינלאומיים</p></div><div style="flex:0.6; display:flex; flex-direction:column; align-items:center; gap:28px;"><div style="background:#F3EEE4; padding:28px; border-radius:4px;"><img src="assets/qr-code.png" alt="Instagram QR" style="width:280px; height:280px; display:block; image-rendering:pixelated;"></div><a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="mono" style="font-size:26px; color:#F3EEE4;">@neoverseboy</a></div></div>`
 },
 
 /* 04 — Platforms */
 {
-  label: "Platforms to Master", screen: "04",
-  notes: "Focus on these 5 platforms for social media growth.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:43px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714;">פלטפורמות</span></div><div style="display:flex; flex-wrap:wrap; gap:24px; max-width:1500px;">${["Instagram","YouTube","TikTok","LinkedIn","Threads"].map(t => `<div style="background:#191714; color:#F3EEE4; font-size:34px; font-weight:600; padding:24px 44px; border-radius:100px;">${t}</div>`).join("")}</div></div>`
+  label: "Platforms", screen: "04",
+  notes: "5 platforms to master.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:43px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714;" dir="rtl">פלטפורמות</span></div><div style="display:flex; flex-wrap:wrap; gap:24px; max-width:1500px;">${["Instagram","YouTube","TikTok","LinkedIn","Threads"].map(t => `<div style="background:#191714; color:#F3EEE4; font-size:34px; font-weight:600; padding:24px 44px; border-radius:100px;">${t}</div>`).join("")}</div></div>`
 },
 
-/* 05 — Section 01 */
+/* 05 — Process */
 {
-  label: "Section 01 — Research & Strategy", screen: "05",
-  notes: "Start with brand research. Know your niche, audience, competitors.",
-  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">01</span><div style="position:relative;"><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px;"><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0 0 28px;">Research<br>&amp; Strategy</h1></div></div>`
+  label: "מחקר ל-Hook", screen: "05",
+  notes: "The workflow: Research → Audience → Tension → Insight → Message → Hooks.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:56px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714;" dir="rtl">התהליך</span></div><div style="direction:rtl; text-align:right;"><div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:40px;">${["מחקר","קהל","מתח","תובנה","מסר","Hook"].map((s,i) => `<div style="background:#191714; color:#F3EEE4; padding:12px 20px; border-radius:100px; font-size:20px; font-weight:600;">${i+1}. ${s}</div>`).join("")}</div><p style="font-size:32px; color:#3d3830; line-height:1.6; max-width:800px;">לפני שמנסחים מסר או Hook, צריך להבין את הקהל, את המתח והתובנה. התהליך מדורג ומהנדסי.</p></div></div>`
 },
 
-/* 06 — Research Initial */
+/* 06 — Section 1 */
 {
-  label: "Research — Brand Analysis", screen: "06",
-  notes: "Start with understanding. Know your niche, pain points, trends.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><span class="kicker">01 —&nbsp;<span style="letter-spacing:1.92px;">מחקר</span></span><h1 class="h-title">Initial brand analysis</h1><div class="prompt-grid-2">${promptCard("התפקיד שלך הוא להיות מומחה סושיאל. המשימה שלך היא לזהות צרכים, כאבים, שאלות, טרנדים והזדמנויות לבידול עבור המותג הבא: [תיאור המותג]. בצע מחקר אינטרנטי בסיסי שיגדיר את תחום הפעילות, קהל היעד, המתחרים, המוצר או השירות, המטרות והטון המותגי. אל תיצור עדיין פוסטים או רעיונות קריאייטיביים. כתוב ניתוח קצר הכולל את הצרכים המרכזיים של הקהל, הכאבים והחסמים, השאלות שהוא שואל, הטרנדים הבולטים בתחום, קלישאות שכדאי להימנע מהן והזדמנויות לבידול שהמותג יכול לנצל","<b>Role:</b> Social media strategist. <b>Task:</b> Analyze niche, identify audience needs, pain points, competitors & differentiation opportunities. <b>Output:</b> Market analysis only—no creative ideas yet.")}</div></div>`
+  label: "Section 1 — Audience", screen: "06",
+  notes: "Transition to audience research.",
+  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">01</span><div style="direction:rtl; text-align:right;"><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px; justify-content:flex-end;"><span style="font-size:26px; font-weight:700; letter-spacing:0.1em; color:#8a8276; text-transform:uppercase;">חלק 01</span><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0;">קהל</h1></div></div>`
 },
 
-/* 07 — Master Prompt */
+/* 07 — Prompt 1 */
 {
-  label: "Research — Master Prompt Framework", screen: "07",
-  notes: "Transform simple prompts into powerful master prompts.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><h1 class="h-title">Master prompt transformation</h1><div class="prompt-grid-2">${promptCard("הפוך את הפרומפט הבא ל-Master Prompt. הרחב אותו כך שיכלול: מה התפקיד שלך, מה המשימה, מה ההקשר, מה המטרה, מה צריך לשאול לפני שמתחילים, איך לעבוד בשלבים, מה לא לעשות, איך התשובה צריכה להיראות. [הדבק פרומפט כאן]. כתוב עכשיו רק את הפרומפט החדש והמשופר.","<b>Input:</b> Simple prompt. <b>Task:</b> Expand into Master Prompt with: role, task, context, goal, questions to ask, working steps, what NOT to do, output format. <b>Output:</b> Refined, powerful prompt only.")}</div></div>`
+  label: "Prompt 1 — קהל", screen: "07",
+  notes: "Audience researcher role.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 1</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">חוקר קהלים אסטרטגי</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">פעל כחוקר קהלים ואסטרטג שיווק.
+
+השתמש רק במחקר, בבריף ובמקורות שנמצאים בפרויקט.
+
+נתח את קהל היעד האפשרי של המותג ואל תיצור עדיין מסרים, רעיונות תוכן או הוקים.
+
+הצג:
+1. קבוצות הקהל האפשריות
+2. מה מאפיין כל קבוצה
+3. מה היא רוצה להשיג
+4. אילו בעיות היא חווה
+5. אילו שאלות היא שואלת
+6. מה משפיע על הבחירה שלה
+7. מה גורם לה לסמוך על מותג
+8. מה גורם לה להתנגד
+
+בסוף, בחר את קהל היעד המרכזי.</p><button class="mono copy-btn" data-prompt="פעל כחוקר קהלים ואסטרטג שיווק. השתמש רק במחקר, בבריף ובמקורות שנמצאים בפרויקט. נתח את קהל היעד האפשרי של המותג ואל תיצור עדיין מסרים, רעיונות תוכן או הוקים. הצג: 1. קבוצות הקהל האפשריות 2. מה מאפיין כל קבוצה 3. מה היא רוצה להשיג 4. אילו בעיות היא חווה 5. אילו שאלות היא שואלת 6. מה משפיע על הבחירה שלה 7. מה גורם לה לסמוך על מותג 8. מה גורם לה להתנגד. בסוף, בחר את קהל היעד המרכזי." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 },
 
-/* 08 — Section 02 */
+/* 08 — Prompt 2 */
 {
-  label: "Section 02 — Instagram", screen: "08",
-  notes: "Instagram is where most brands grow. Master these 5 prompts.",
-  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">02</span><div><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px;"><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0 0 28px;">Instagram</h1></div></div>`
+  label: "Prompt 2 — מצב קהל", screen: "08",
+  notes: "Audience situation mapping.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 2</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">מיפוי מצב הקהל</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">בהתבסס על קהל היעד שנבחר, תאר את מצבו לפני המפגש עם המותג.
+
+אל תיצור עדיין מסרים או הוקים.
+
+הצג:
+1. מה קורה בחייו כרגע
+2. מה הוא מנסה להשיג
+3. מה הוא כבר ניסה
+4. מה לא עבד עבורו
+5. מה הוא מרגיש ביחס לבעיה
+6. מה הוא חושש שיקרה
+7. מה יגרום לו לחפש פתרון עכשיו
+8. באילו מילים הוא עשוי לתאר את המצב
+
+בסוף: "הקהל שלנו הוא אנשים ש..., נמצאים במצב שבו..., ומחפשים..."</p><button class="mono copy-btn" data-prompt="בהתבסס על קהל היעד שנבחר, תאר את מצבו לפני המפגש עם המותג. אל תיצור עדיין מסרים או הוקים. הצג: 1. מה קורה בחייו כרגע 2. מה הוא מנסה להשיג 3. מה הוא כבר ניסה 4. מה לא עבד עבורו 5. מה הוא מרגיש ביחס לבעיה 6. מה הוא חושש שיקרה 7. מה יגרום לו לחפש פתרון עכשיו 8. באילו מילים הוא עשוי לתאר את המצב. בסוף: הקהל שלנו הוא אנשים ש..., נמצאים במצב שבו..., ומחפשים..." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 },
 
-/* 09 — Instagram Growth */
+/* 09 — Section 2 */
 {
-  label: "Instagram — Growth Strategist", screen: "09",
-  notes: "Beat saturation. Create content that breaks algorithm patterns.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><span class="kicker">02 — Instagram</span><h1 class="h-title">Break saturation patterns</h1><div class="prompt-grid-2">${promptCard("Act as a senior Instagram growth strategist. Analyze my niche, identify the 7 most saturated content patterns, and create 10 post ideas that break those patterns without losing algorithm compatibility. For each idea, provide: Concept, Hook, Ideal format, Why it feels fresh, Why it would generate saves or shares. Niche: [NICHE] | Audience: [AUDIENCE] | Goal: [GOAL]","<b>Role:</b> Instagram growth strategist. <b>Task:</b> Identify saturated patterns, create 10 fresh ideas that break them. <b>For each:</b> Concept, hook, format, why fresh, why shareable. <b>Input:</b> Your niche, audience, goal.")}</div></div>`
+  label: "Section 2 — Tension", screen: "09",
+  notes: "Tension and barriers.",
+  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">02</span><div style="direction:rtl; text-align:right;"><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px; justify-content:flex-end;"><span style="font-size:26px; font-weight:700; letter-spacing:0.1em; color:#8a8276; text-transform:uppercase;">חלק 02</span><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0;">מתח<br>וחסמים</h1></div></div>`
 },
 
-/* 10 — Viral Hooks */
+/* 10 — Prompt 3 */
 {
-  label: "Instagram — Viral Hooks", screen: "10",
-  notes: "Opening lines. 15 hooks across 5 categories. Stop the scroll.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><h1 class="h-title">Viral opening hooks</h1><div class="prompt-grid-2">${promptCard("Act as a viral copywriter specializing in Instagram. Generate 15 opening hooks for this idea, divided into: Curiosity, Contrarian, Emotional tension, Specificity, Subtle authority. Each hook must stop the scroll without using clickbait and feel intelligent, native, and strong. At the end, rank the top 5. Idea: [IDEA] | Audience: [AUDIENCE] | Tone: [TONE]","<b>15 hooks</b> across 5 categories: Curiosity, Contrarian, Emotional tension, Specificity, Subtle authority. <b>Must:</b> Stop the scroll, no clickbait, feel intelligent. <b>Rank:</b> Top 5. <b>Input:</b> Idea, audience, tone.")}</div></div>`
+  label: "Prompt 3 — מתחים", screen: "10",
+  notes: "Identify central tensions.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 3</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">ממפה מתחים בקהל</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">בהתבסס על אפיון הקהל, זהה את המתחים המרכזיים שהוא חווה.
+
+מתח הוא פער בין דבר שהקהל רוצה לבין חסם שמונע ממנו להשיג אותו.
+
+אל תיצור עדיין מסרים או הוקים.
+
+צור טבלה הכוללת:
+1. מה הקהל רוצה
+2. מה מפריע לו
+3. מה הוא חושב על הבעיה
+4. מה הוא מרגיש
+5. מה הוא עושה כיום
+6. מדוע הפתרונות הקיימים אינם מספקים
+7. כיצד המותג יכול להיות רלוונטי
+
+נסח לפחות 5 מתחים. בחר את 3 החזקים ביותר.</p><button class="mono copy-btn" data-prompt="בהתבסס על אפיון הקהל, זהה את המתחים המרכזיים שהוא חווה. מתח הוא פער בין דבר שהקהל רוצה לבין חסם שמונע ממנו להשיג אותו. אל תיצור עדיין מסרים או הוקים. צור טבלה הכוללת: 1. מה הקהל רוצה 2. מה מפריע לו 3. מה הוא חושב על הבעיה 4. מה הוא מרגיש 5. מה הוא עושה כיום 6. מדוע הפתרונות הקיימים אינם מספקים 7. כיצד המותג יכול להיות רלוונטי. נסח לפחות 5 מתחים. בחר את 3 החזקים ביותר." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 },
 
-/* 11 — Faceless Content */
+/* 11 — Prompt 4 */
 {
-  label: "Instagram — Faceless Content", screen: "11",
-  notes: "No face, no trends, no complex editing. 3 formats.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><h1 class="h-title">Faceless content strategy</h1><div class="prompt-grid-2">${promptCard("Act as a faceless content strategist for Instagram. Transform this idea into 3 versions: Carousel, Text-only reel, Silent visual post. Do not use a face, voice, trends, or complex editing. For each version, deliver: Structure, On-screen text, Visual direction, Caption, CTA. Idea: [IDEA] | Audience: [AUDIENCE] | Goal: [GOAL]","<b>3 formats:</b> Carousel, text-only reel, silent visual post. <b>No face, voice, trends,</b> or complex editing. <b>For each:</b> Structure, on-screen text, visuals, caption, CTA. <b>Input:</b> Idea, audience, goal.")}</div></div>`
+  label: "Prompt 4 — חסמים", screen: "11",
+  notes: "Analyze barriers and beliefs.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 4</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">ניתוח חסמים ואמונות</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">פעל כאסטרטג התנהגות צרכנית.
+
+בחן את שלושת המתחים שנבחרו וזהה מה באמת מעכב את הקהל.
+
+לכל מתח הצג:
+1. החסם המעשי
+2. החסם הרגשי
+3. האמונה הקיימת
+4. החשש המרכזי
+5. המחיר של אי פעולה
+6. מה הקהל צריך לראות כדי לשנות את דעתו
+7. איזה סוג הוכחה עשוי להפחית את החסם
+
+אל תציע עדיין מסרים. בסוף, דרג את המתחים וחסם אחד שיהיה בסיס לתהליך המסרים.</p><button class="mono copy-btn" data-prompt="פעל כאסטרטג התנהגות צרכנית. בחן את שלושת המתחים שנבחרו וזהה מה באמת מעכב את הקהל. לכל מתח הצג: 1. החסם המעשי 2. החסם הרגשי 3. האמונה הקיימת 4. החשש המרכזי 5. המחיר של אי פעולה 6. מה הקהל צריך לראות כדי לשנות את דעתו 7. איזה סוג הוכחה עשוי להפחית את החסם. אל תציע עדיין מסרים. בסוף, דרג את המתחים." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 },
 
-/* 12 — Retention */
+/* 12 — Section 3 */
 {
-  label: "Instagram — Retention Optimization", screen: "12",
-  notes: "Keep them watching. Maximize watch time, completion, saves, shares.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><h1 class="h-title">Maximize retention metrics</h1><div class="prompt-grid-2">${promptCard("Act as an Instagram retention specialist. Rewrite this content to maximize: Watch time, Completion rate, Saves, Shares. Make each line pull the reader into the next, eliminate weak parts, and keep a natural, sharp, non-promotional tone. Then briefly explain why the new version is better. Content: [PASTE THE TEXT] | Voice: [VOICE] | Audience: [AUDIENCE]","<b>Rewrite for:</b> Watch time, completion, saves, shares. <b>Each line</b> pulls to the next. <b>Tone:</b> Natural, sharp, non-promotional. <b>Explain:</b> Why better. <b>Input:</b> Your content, voice, audience.")}</div></div>`
+  label: "Section 3 — Insight", screen: "12",
+  notes: "Strategic insight.",
+  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">03</span><div style="direction:rtl; text-align:right;"><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px; justify-content:flex-end;"><span style="font-size:26px; font-weight:700; letter-spacing:0.1em; color:#8a8276; text-transform:uppercase;">חלק 03</span><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0;">תובנה</h1></div></div>`
 },
 
-/* 13 — Section 03 */
+/* 13 — Prompt 5 */
 {
-  label: "Section 03 — YouTube", screen: "13",
-  notes: "YouTube is the long game. Build authority, monetize faster.",
-  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">03</span><div><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px;"><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0 0 28px;">YouTube</h1></div></div>`
+  label: "Prompt 5 — תובנות", screen: "13",
+  notes: "Distill strategic insights.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 5</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">זיקוק תובנות אסטרטגיות</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">בהתבסס על המחקר, אפיון הקהל והמתח שנבחר, נסח תובנות אסטרטגיות.
+
+תובנה צריכה להסביר מדוע הקהל חושב, מרגיש או פועל כפי שהוא פועל.
+
+לכל תובנה הצג:
+1. הממצא שעליו היא מבוססת
+2. מה המשמעות של הממצא
+3. מה הקהל אומר
+4. מה ייתכן שהוא באמת צריך
+5. מה המותג יכול להבין מכך
+6. איזו הנחה עדיין דורשת בדיקה
+
+נסח 5 תובנות במשפט אחד כל אחת. אל תכתוב עדיין מסרים. בחר את התובנה החזקה ביותר.</p><button class="mono copy-btn" data-prompt="בהתבסס על המחקר, אפיון הקהל והמתח שנבחר, נסח תובנות אסטרטגיות. תובנה צריכה להסביר מדוע הקהל חושב, מרגיש או פועל כפי שהוא פועל. לכל תובנה הצג: 1. הממצא שעליו היא מבוססת 2. מה המשמעות של הממצא 3. מה הקהל אומר 4. מה ייתכן שהוא באמת צריך 5. מה המותג יכול להבין מכך 6. איזו הנחה עדיין דורשת בדיקה. נסח 5 תובנות במשפט אחד כל אחת. אל תכתוב עדיין מסרים. בחר את התובנה החזקה ביותר." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 },
 
-/* 14 — YouTube Ideas */
+/* 14 — Prompt 6 */
 {
-  label: "YouTube — Viral Video Ideas", screen: "14",
-  notes: "10 video ideas based on trends and your niche.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><span class="kicker">03 — YouTube</span><h1 class="h-title">Viral video ideas</h1><div class="prompt-grid-2">${promptCard("I want to create a YouTube channel about [INSERT NICHE]. Generate a list of 10 video ideas that could go viral, based on current trends, trending topics, and what works best in my niche. For each idea provide: Title, Hook, Why it will work, Estimated watch time, Monetization angle.","<b>10 video ideas</b> for your niche. <b>For each:</b> Title, hook, why it works, watch time, monetization angle. <b>Based on:</b> Trends, current topics, niche performance. <b>Input:</b> Your niche.")}</div></div>`
+  label: "Prompt 6 — פערים", screen: "14",
+  notes: "Category gaps and opportunities.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 6</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">איתור פערים בקטגוריה</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">פעל כאסטרטג קטגוריה ומיצוב.
+
+השווה בין:
+- מה שהקהל צריך
+- מה שהמתחרים אומרים
+- מה שהמותג יכול להציע
+
+אל תיצור עדיין רעיונות תוכן.
+
+זהה:
+1. אילו מסרים חוזרים אצל המתחרים
+2. אילו קלישאות נפוצות
+3. אילו צרכים אינם מקבלים מענה
+4. אילו שאלות נשארות פתוחות
+5. אילו טענות כולם מעלים אך אינם מוכיחים
+6. היכן קיימת הזדמנות למותג
+
+נסח 3 תובנות: "רוב המותגים מדברים על..., אבל הקהל למעשה מחפש..."</p><button class="mono copy-btn" data-prompt="פעל כאסטרטג קטגוריה ומיצוב. השווה בין: מה שהקהל צריך, מה שהמתחרים אומרים, מה שהמותג יכול להציע. אל תיצור עדיין רעיונות תוכן. זהה: 1. אילו מסרים חוזרים אצל המתחרים 2. אילו קלישאות נפוצות 3. אילו צרכים אינם מקבלים מענה 4. אילו שאלות נשארות פתוחות 5. אילו טענות כולם מעלים אך אינם מוכיחים 6. היכן קיימת הזדמנות למותג. נסח 3 תובנות קטגוריה." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 },
 
-/* 15 — YouTube Script */
+/* 15 — Section 4 */
 {
-  label: "YouTube — Video Script Formula", screen: "15",
-  notes: "Strong hook. Engaging story. Persuasive CTA.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><h1 class="h-title">Script structure & flow</h1><div class="prompt-grid-2">${promptCard("Write a YouTube video script for my idea about [INSERT TOPIC]. Make sure to include: A strong hook to grab attention, An engaging story to keep people watching, A persuasive call to action that drives engagement. Format the script with: [HOOK], [BODY], [CTA].","<b>Script for:</b> [Your topic]. <b>Must include:</b> Strong hook, engaging story, persuasive CTA. <b>Format:</b> Hook, body, CTA. <b>Keep:</b> Natural pace, conversational tone.")}</div></div>`
+  label: "Section 4 — Message & Hooks", screen: "15",
+  notes: "Message and hook creation.",
+  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">04</span><div style="direction:rtl; text-align:right;"><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px; justify-content:flex-end;"><span style="font-size:26px; font-weight:700; letter-spacing:0.1em; color:#8a8276; text-transform:uppercase;">חלק 04</span><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0;">מסר<br>והוקים</h1></div></div>`
 },
 
-/* 16 — YouTube Automation */
+/* 16 — Prompt 7 */
 {
-  label: "YouTube — Faceless Channel Setup", screen: "16",
-  notes: "Build a faceless channel. Automate scripts, voiceover, editing.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><h1 class="h-title">Automation & workflow</h1><div class="prompt-grid-2">${promptCard("I want to start a faceless YouTube channel in [NICHE]. Show me how to use ChatGPT to write scripts, AI voices for narration, stock footage, and editing tools to automate the workflow and earn money. Include: Tools, workflow steps, cost estimate, monetization timeline.","<b>Faceless channel</b> setup for [niche]. <b>Tools:</b> ChatGPT scripts, AI voices, stock footage, editing. <b>Workflow:</b> Step-by-step automation. <b>Include:</b> Costs, monetization timeline.")}</div></div>`
+  label: "Prompt 7 — מסר", screen: "16",
+  notes: "Message architecture.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 7</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">אדריכל מסרים</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">פעל כאדריכל מסרים למותגים.
+
+השתמש בקהל, במתח ובתובנה שאושרו.
+
+נסח מסר מרכזי אחד שהמותג רוצה לבסס.
+
+המסר צריך:
+- לענות על מתח אמיתי
+- לבטא נקודת מבט ברורה
+- להיות רלוונטי לקהל
+- להיות שונה מהקלישאות
+- להיות אמין וניתן להוכחה
+- לא להישמע כמו סלוגן פרסומי
+
+הצע 3 גרסאות: ישירה, רגשית, סמכותית.
+
+לכל גרסה ציין מה הקהל אמור להבין, מה מבדיל, איזו הוכחה נדרשת, מה הסיכון.</p><button class="mono copy-btn" data-prompt="פעל כאדריכל מסרים למותגים. השתמש בקהל, במתח ובתובנה שאושרו. נסח מסר מרכזי אחד שהמותג רוצה לבסס. המסר צריך: לענות על מתח אמיתי, לבטא נקודת מבט ברורה, להיות רלוונטי לקהל, להיות שונה מהקלישאות, להיות אמין וניתן להוכחה, לא להישמע כמו סלוגן פרסומי. הצע 3 גרסאות: ישירה, רגשית, סמכותית." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 },
 
-/* 17 — Section 04 */
+/* 17 — Prompt 8 */
 {
-  label: "Section 04 — Growth & Systems", screen: "17",
-  notes: "Scale. Systems. Consistency. These are the growth accelerators.",
-  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">04</span><div><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px;"><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0 0 28px;">Growth<br>Systems</h1></div></div>`
+  label: "Prompt 8 — מיצוב", screen: "17",
+  notes: "Brand positioning.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 8</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">מומחה למיצוב מותג</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">פעל כמומחה למיצוב מותגים.
+
+בהתבסס על המסר המרכזי שנבחר, נסח שורת מיצוב ברורה.
+
+השורה צריכה להסביר:
+1. למי המותג מיועד
+2. מה הוא עוזר להשיג
+3. מה שונה בגישה שלו
+4. מדוע כדאי להאמין לו
+
+הצע 3 גרסאות: אלגנטית, ישירה, פרימיום.
+
+הימנע מקלישאות, הבטחות מוגזמות, ומילים כמו מהפכני או ייחודי.
+
+המלץ על גרסה אחת והסבר כיצד היא מתחברת לתובנה ולמתח.</p><button class="mono copy-btn" data-prompt="פעל כמומחה למיצוב מותגים. בהתבסס על המסר המרכזי שנבחר, נסח שורת מיצוב ברורה. השורה צריכה להסביר: 1. למי המותג מיועד 2. מה הוא עוזר להשיג 3. מה שונה בגישה שלו 4. מדוע כדאי להאמין לו. הצע 3 גרסאות: אלגנטית, ישירה, פרימיום. הימנע מקלישאות, הבטחות מוגזמות." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 },
 
-/* 18 — Key Takeaways */
+/* 18 — Prompt 9 */
 {
-  label: "Key Takeaways", screen: "18",
-  notes: "5 principles for social media success. Apply immediately.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:56px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714; text-transform:uppercase;">טיפים לסיום</span></div><div style="display:grid; grid-template-columns:1fr 1fr; gap:60px;">${[["01","ניתוח קודם. אל תתחילו בתוכן בלי להבין את השוק, הקהל והמתחרים"],["02","Master prompts חוסכים זמן. תרחיבו כל פרומפט מופשט לממנו מסודר"],["03","תוכן פשוט עולה על קידוד מורכב. לא צריך טרנדים או עריכה מתוחכמת"],["04","צפיפות פעמים תביעה עדיפות על איכות קטנה. עמידו בקביעות, תוצאות מובטחות"]]
-        .map(([n,t]) => `<div style="display:flex; gap:28px;"><span class="mono" style="font-size:44px; color:#E8385A; font-weight:600;">${n}</span><p style="font-size:32px; color:#191714; line-height:1.5; margin:0;">${t}</p></div>`).join("")}</div></div>`
+  label: "Prompt 9 — הוקים", screen: "18",
+  notes: "Hook writing.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 9</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">כתיבת הוקים חכמים</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">פעל ככותב הוקים לסושיאל.
+
+השתמש רק בקהל, במתח, בתובנה ובמסר שאושרו.
+
+צור 12 הוקים:
+- 3 מבוססי כאב
+- 3 מבוססי תוצאה
+- 3 מבוססי ניגוד
+- 3 מבוססי גילוי
+
+כל הוק חייב:
+1. להתמקד בנושא אחד
+2. לפתוח שאלה אחת
+3. להציג הקשר מיד
+4. להיות רלוונטי לקהל
+5. להוביל למסר המרכזי
+6. להשתמש בשפה פשוטה
+7. להימנע מקליקבייט
+8. להבטיח ערך שהתוכן יכול לקיים
+
+לכל הוק ציין הזווית, השאלה, המתח, ההבטחה, סוג ההוכחה הנדרש.
+
+דרג את 5 ההוקים החזקים ביותר.</p><button class="mono copy-btn" data-prompt="פעל ככותב הוקים לסושיאל. השתמש רק בקהל, במתח, בתובנה ובמסר שאושרו. צור 12 הוקים: 3 מבוססי כאב, 3 מבוססי תוצאה, 3 מבוססי ניגוד, 3 מבוססי גילוי. כל הוק חייב: 1. להתמקד בנושא אחד 2. לפתוח שאלה אחת 3. להציג הקשר מיד 4. להיות רלוונטי לקהל 5. להוביל למסר המרכזי 6. להשתמש בשפה פשוטה 7. להימנע מקליקבייט 8. להבטיח ערך שהתוכן יכול לקיים. לכל הוק ציין הזווית, השאלה, המתח, ההבטחה, סוג ההוכחה. דרג את 5 ההוקים החזקים." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 },
 
-/* 19 — Thank You */
+/* 19 — Prompt 10 */
 {
-  label: "Thank You", screen: "19",
-  notes: "Close. Remind them how to follow and apply.",
-  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;"><span style="font-size:26px; font-weight:700; letter-spacing:0.1em; color:#8a8276; text-transform:uppercase; margin-bottom:28px;">Thank you</span><h1 style="font-size:104px; color:#F3EEE4; font-weight:700; margin:0 0 24px;">Grow Big</h1><p style="font-size:40px; color:#d8d2c6; margin:0 0 48px; direction:rtl;" dir="rtl">גדלו בקביעות</p><div style="display:flex; align-items:center; gap:20px;"><span style="width:6px; height:6px; border-radius:50%; background:#8a8276; display:inline-block;"></span><a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="mono" style="font-size:26px; color:#E8385A;">@neoverseboy</a></div></div>`
+  label: "Prompt 10 — ביקורת", screen: "19",
+  notes: "Hook review and filtering.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 10</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">ביקורת הוקים וסינון קליקבייט</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;"><div class="card"><p class="mono p" style="direction:rtl; text-align:right;">פעל כעורך בכיר ומבקר הוקים.
+
+בדוק כל הוק לפי הקריטריונים:
+1. בהירות הנושא
+2. רלוונטיות לקהל
+3. דריכוז בנושא אחד
+4. שאלה אחת ברורה
+5. סקרנות אמיתית
+6. התאמה למסר
+7. אמינות ההבטחה
+8. סיכון לקליקבייט
+
+דרג כל הוק מ-1 עד 5 בכל קריטריון.
+
+אל תשכתב מיד. תחילה הסבר מה עובד ומה לא.
+לאחר מכן שפר רק את ההוקים החלשים.
+
+שמור על המסר המקורי, שפת המותג, בהירות, סקרנות ואמינות.</p><button class="mono copy-btn" data-prompt="פעל כעורך בכיר ומבקר הוקים. בדוק כל הוק לפי הקריטריונים: 1. בהירות הנושא 2. רלוונטיות לקהל 3. דריכוז בנושא אחד 4. שאלה אחת ברורה 5. סקרנות אמיתית 6. התאמה למסר 7. אמינות ההבטחה 8. סיכון לקליקבייט. דרג כל הוק מ-1 עד 5. אל תשכתב מיד. תחילה הסבר מה עובד ומה לא. שמור על המסר המקורי, שפת המותג, בהירות." style="align-self:flex-start; margin-top:16px;">העתקה</button></div></div></div>`
 }
 
 ];
 
-/* Runtime — same as original */
 (function () {
   const STAGE_W = 1920, STAGE_H = 1080;
   const wrap = document.getElementById("stage-wrap");
@@ -164,7 +309,6 @@ const SLIDES = [
   const tocEl = document.getElementById("toc");
   const tocGrid = document.getElementById("toc-grid");
   const toast = document.getElementById("toast");
-
   let index = 0;
   let notesVisible = false;
 
@@ -235,10 +379,10 @@ const SLIDES = [
     if (!btn) return;
     const text = btn.dataset.prompt;
     const done = () => {
-      btn.textContent = "Copied ✓";
+      btn.textContent = "הועתק ✓";
       btn.classList.add("copied");
-      showToast("Prompt copied");
-      setTimeout(() => { btn.textContent = "Copy"; btn.classList.remove("copied"); }, 1500);
+      showToast("הועתק");
+      setTimeout(() => { btn.textContent = "העתקה"; btn.classList.remove("copied"); }, 1500);
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
@@ -250,7 +394,7 @@ const SLIDES = [
     const ta = document.createElement("textarea");
     ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
     document.body.appendChild(ta); ta.select();
-    try { document.execCommand("copy"); cb(); } catch (e) { showToast("Copy failed"); }
+    try { document.execCommand("copy"); cb(); } catch (e) { showToast("העתקה נכשלה"); }
     document.body.removeChild(ta);
   }
 
