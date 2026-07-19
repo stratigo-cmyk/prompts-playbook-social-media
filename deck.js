@@ -275,8 +275,8 @@ function promptCardWithEnglish(hebrewPrompt, englishPromptId) {
     <div class="card" style="flex-direction:column; justify-content:space-between;">
       <p class="mono p" style="direction:rtl; text-align:right;">${hebrewPrompt}</p>
       <div style="display:flex; gap:8px; align-self:flex-start; margin-top:16px;">
-        <button class="mono copy-english" type="button" data-prompt-en="${escEn}" style="background:#191714; color:#F3EEE4; padding:10px 24px; border:none; border-radius:24px; cursor:pointer; font-size:18px;">English</button>
-        <button class="mono copy-btn" data-prompt="${escHe}" style="background:#191714; color:#F3EEE4; padding:10px 24px; border:none; border-radius:24px; cursor:pointer; font-size:14px;">העתקה</button>
+        <button class="mono copy-english" type="button" data-prompt-en="${escEn}" style="background:#191714; color:#F3EEE4; padding:10px 24px; border:none; border-radius:24px; cursor:pointer; font-size:16px;">English</button>
+        <button class="mono copy-btn" data-prompt="${escHe}" style="background:#191714; color:#F3EEE4; padding:10px 24px; border:none; border-radius:24px; cursor:pointer; font-size:16px;">העתקה</button>
       </div>
     </div>
   `;
