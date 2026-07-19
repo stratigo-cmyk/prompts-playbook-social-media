@@ -314,9 +314,9 @@ const SLIDES = [
 
 /* 05 — Process */
 {
-  label: "מחקר ל-Hook", screen: "05",
-  notes: "The workflow: Research → Audience → Tension → Insight → Message → Hooks.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:56px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714;" dir="rtl">התהליך</span></div><div style="direction:rtl; text-align:right;"><div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:40px;">${["מחקר","קהל","מתח","תובנה","מסר","Hook"].map((s,i) => `<div style="background:#191714; color:#F3EEE4; padding:12px 20px; border-radius:100px; font-size:20px; font-weight:600;">${i+1}. ${s}</div>`).join("")}</div><p style="font-size:32px; color:#3d3830; line-height:1.6; max-width:800px;">לפני שמנסחים מסר או Hook, צריך להבין את הקהל, את המתח והתובנה. התהליך מדורג ומהנדסי.</p></div></div>`
+  label: "לפני שמתחילים לכתוב", screen: "05",
+  notes: "Strategic foundation before writing.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:100px; display:flex; flex-direction:column; justify-content:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#191714;" dir="rtl">לפני שמתחילים לכתוב</span></div><div style="direction:rtl; text-align:right;"><p style="font-size:28px; color:#3d3830; line-height:1.8; max-width:900px;">לפני שמבקשים ממודל שפה לייצר תוכן, צריך לבנות עבורו תשתית אסטרטגית ברורה.<br><br>מגדירים מי הקהל, באיזה מצב הוא נמצא, מה הוא רוצה להשיג, אילו חסמים ונקודות כאב מעכבים אותו, ומהן התובנות שעולות מהמחקר.<br><br>רק לאחר שהבסיס הזה ברור, עוברים לניסוח המסר, לבחירת זוויות התוכן ולכתיבת הוקים רלוונטיים.<br><br>מודל שפה לא מחליף חשיבה אסטרטגית. הוא משפר ומאיץ אותה, כאשר מזינים אותו בהקשר הנכון.</p></div></div>`
 },
 
 /* 06 — Section 1 */
@@ -424,25 +424,6 @@ const SLIDES = [
   label: "Section 3 — Insight", screen: "12",
   notes: "Strategic insight.",
   html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; position:relative;"><span class="mono section-num">03</span><div style="direction:rtl; text-align:right;"><div style="display:flex; align-items:center; gap:20px; margin-bottom:32px; justify-content:flex-end;"><span style="font-size:26px; font-weight:700; letter-spacing:0.1em; color:#8a8276; text-transform:uppercase;">חלק 03</span><div style="width:60px; height:3px; background:#E8385A;"></div></div><h1 style="font-size:110px; color:#F3EEE4; font-weight:700; margin:0;">תובנה</h1></div></div>`
-},
-
-/* 13 — Prompt 5 */
-{
-  label: "Prompt 5 — תובנות", screen: "13",
-  notes: "Distill strategic insights.",
-  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 5</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">זיקוק תובנות אסטרטגיות</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;">${promptCardWithEnglish(`בהתבסס על המחקר, אפיון הקהל והמתח שנבחר, נסח תובנות אסטרטגיות.
-
-תובנה צריכה להסביר מדוע הקהל חושב, מרגיש או פועל כפי שהוא פועל.
-
-לכל תובנה הצג:
-1. הממצא שעליו היא מבוססת
-2. מה המשמעות של הממצא
-3. מה הקהל אומר
-4. מה ייתכן שהוא באמת צריך
-5. מה המותג יכול להבין מכך
-6. איזו הנחה עדיין דורשת בדיקה
-
-נסח 5 תובנות במשפט אחד כל אחת. אל תכתוב עדיין מסרים. בחר את התובנה החזקה ביותר.`, 5)}</div></div></div>`
 },
 
 /* 14 — Prompt 6 */
@@ -571,6 +552,25 @@ const SLIDES = [
 לאחר מכן שפר רק את ההוקים החלשים.
 
 שמור על המסר המקורי, שפת המותג, בהירות, סקרנות ואמינות.`, 10)}</div></div></div>`
+},
+
+/* 20 — Prompt 5 (Moved to End) */
+{
+  label: "Prompt 5 — תובנות", screen: "13",
+  notes: "Distill strategic insights.",
+  html: `<div class="slide-inner" style="background:#F3EEE4; padding:80px 100px; display:flex; flex-direction:column;"><div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><div><span style="font-size:24px; color:#E8385A; font-weight:600;">Prompt 5</span><h1 style="font-size:56px; color:#191714; font-weight:700; margin:8px 0 0;">זיקוק תובנות אסטרטגיות</h1></div></div><div style="flex:1; display:flex; flex-direction:column; gap:20px; margin-top:32px; direction:rtl; text-align:right;">${promptCardWithEnglish(`בהתבסס על המחקר, אפיון הקהל והמתח שנבחר, נסח תובנות אסטרטגיות.
+
+תובנה צריכה להסביר מדוע הקהל חושב, מרגיש או פועל כפי שהוא פועל.
+
+לכל תובנה הצג:
+1. הממצא שעליו היא מבוססת
+2. מה המשמעות של הממצא
+3. מה הקהל אומר
+4. מה ייתכן שהוא באמת צריך
+5. מה המותג יכול להבין מכך
+6. איזו הנחה עדיין דורשת בדיקה
+
+נסח 5 תובנות במשפט אחד כל אחת. אל תכתוב עדיין מסרים. בחר את התובנה החזקה ביותר.`, 5)}</div></div></div>`
 }
 
 ];
