@@ -262,6 +262,277 @@ Preserve:
 - A credible promise` }
 ];
 
+// Full prompt text sourced verbatim from 10_prompts_hebrew.md and 10_prompts_english.md
+// (fuller than the on-slide versions, used only for the "copy all" buttons on the closing slide)
+const FULL_PROMPTS_HE = [
+  { id: 1, title: "חוקר קהלים אסטרטגי", prompt: `פעל כחוקר קהלים ואסטרטג שיווק.
+
+השתמש רק במחקר, בבריף ובמקורות שנמצאים בפרויקט.
+
+נתח את קהל היעד האפשרי של המותג ואל תיצור עדיין מסרים, רעיונות תוכן או הוקים.
+
+הצג:
+
+1. קבוצות הקהל האפשריות
+2. מה מאפיין כל קבוצה
+3. מה היא רוצה להשיג
+4. אילו בעיות היא חווה
+5. אילו שאלות היא שואלת
+6. מה משפיע על הבחירה שלה
+7. מה גורם לה לסמוך על מותג בתחום
+8. מה גורם לה לחשוד או להתנגד
+
+הפרד בין:
+
+- מידע שמופיע במקורות
+- פרשנות אסטרטגית
+- הנחות שדורשות בדיקה
+
+בסוף, בחר את קהל היעד המרכזי והסבר מדוע הוא המתאים ביותר למותג.` },
+  { id: 2, title: "מיפוי מצב הקהל", prompt: `בהתבסס על קהל היעד שנבחר, תאר את מצבו לפני המפגש עם המותג.
+
+אל תיצור עדיין מסרים או הוקים.
+
+הצג:
+
+1. מה קורה בחייו או בעבודתו כרגע
+2. מה הוא מנסה להשיג
+3. מה הוא כבר ניסה
+4. מה לא עבד עבורו
+5. מה הוא מרגיש ביחס לבעיה
+6. מה הוא חושש שיקרה
+7. מה יגרום לו לחפש פתרון עכשיו
+8. באילו מילים הוא עשוי לתאר את המצב שלו
+
+בסוף, נסח תיאור קצר של הקהל:
+
+"הקהל שלנו הוא אנשים ש..., נמצאים במצב שבו..., ומחפשים..."` },
+  { id: 3, title: "ממפה מתחים בקהל", prompt: `בהתבסס על אפיון הקהל, זהה את המתחים המרכזיים שהוא חווה.
+
+מתח הוא פער בין דבר שהקהל רוצה לבין חסם, חשש, אמונה או מצב שמונע ממנו להשיג אותו.
+
+אל תיצור עדיין מסרים, רעיונות תוכן או הוקים.
+
+צור טבלה הכוללת:
+
+1. מה הקהל רוצה
+2. מה מפריע לו להשיג זאת
+3. מה הוא חושב על הבעיה
+4. מה הוא מרגיש
+5. מה הוא עושה כיום
+6. מדוע הפתרונות הקיימים אינם מספקים אותו
+7. כיצד המותג יכול להיות רלוונטי למתח הזה
+
+נסח לפחות 5 מתחים.
+
+בסוף, בחר את 3 המתחים החזקים ביותר לפי:
+
+- חשיבות לקהל
+- התאמה למותג
+- פוטנציאל לבידול
+- יכולת להוכיח את הטענה` },
+  { id: 4, title: "ניתוח חסמים ואמונות", prompt: `פעל כאסטרטג התנהגות צרכנית.
+
+בחן את שלושת המתחים שנבחרו וזהה מה באמת מעכב את הקהל.
+
+לכל מתח הצג:
+
+1. החסם המעשי
+2. החסם הרגשי
+3. האמונה הקיימת
+4. החשש המרכזי
+5. המחיר של אי פעולה
+6. מה הקהל צריך לראות או להבין כדי לשנות את דעתו
+7. איזה סוג הוכחה עשוי להפחית את החסם
+
+אל תציע עדיין מסרים או הוקים.
+
+בסוף, דרג את המתחים לפי עוצמתם והמלץ על מתח אחד שיהיה בסיס לתהליך המסרים.` },
+  { id: 5, title: "זיקוק תובנות אסטרטגיות", prompt: `בהתבסס על המחקר, אפיון הקהל והמתח שנבחר, נסח תובנות אסטרטגיות.
+
+תובנה אינה רק תיאור של הבעיה. היא צריכה להסביר מדוע הקהל חושב, מרגיש או פועל כפי שהוא פועל.
+
+לכל תובנה הצג:
+
+1. הממצא שעליו היא מבוססת
+2. מה המשמעות של הממצא
+3. מה הקהל אומר
+4. מה ייתכן שהוא באמת צריך
+5. מה המותג יכול להבין מכך
+6. איזו הנחה עדיין דורשת בדיקה
+
+נסח 5 תובנות במשפט אחד כל אחת.
+
+אל תכתוב עדיין מסרים, תוכן או הוקים.
+
+בסוף, בחר את התובנה החזקה ביותר לפי:
+
+- עומק
+- רלוונטיות
+- מקוריות
+- פוטנציאל לבידול` },
+  { id: 6, title: "איתור פערים בקטגוריה", prompt: `פעל כאסטרטג קטגוריה ומיצוב.
+
+השווה בין:
+
+- מה שהקהל צריך
+- מה שהמתחרים אומרים
+- מה שהמותג יכול להציע באופן אמין
+
+אל תיצור עדיין רעיונות תוכן או הוקים.
+
+זהה:
+
+1. אילו מסרים חוזרים אצל המתחרים
+2. אילו קלישאות נפוצות בקטגוריה
+3. אילו צרכים של הקהל אינם מקבלים מענה
+4. אילו שאלות נשארות פתוחות
+5. אילו טענות כולם מעלים אך כמעט לא מוכיחים
+6. היכן קיימת הזדמנות למותג לומר משהו שונה
+
+נסח 3 תובנות קטגוריה במבנה:
+
+"רוב המותגים מדברים על..., אבל הקהל למעשה מחפש..."
+
+בסוף, המלץ על תובנה אחת שמתאימה במיוחד למותג.` },
+  { id: 7, title: "אדריכל מסרים", prompt: `פעל כאדריכל מסרים למותגים.
+
+השתמש בקהל, במתח ובתובנה שאושרו.
+
+נסח מסר מרכזי אחד שהמותג רוצה לבסס אצל הקהל.
+
+המסר צריך:
+
+- לענות על מתח אמיתי
+- לבטא נקודת מבט ברורה
+- להיות רלוונטי לקהל
+- להיות שונה מהקלישאות בקטגוריה
+- להיות אמין וניתן להוכחה
+- לא להישמע כמו סלוגן פרסומי
+
+הצע 3 גרסאות:
+
+1. ישירה
+2. רגשית
+3. סמכותית
+
+לכל גרסה ציין:
+
+- מה הקהל אמור להבין
+- מה הוא אמור להאמין
+- מה מבדל את המסר
+- איזו הוכחה נדרשת
+- מה הסיכון שהמסר יישמע גנרי
+
+אל תיצור עדיין הוקים.` },
+  { id: 8, title: "מומחה למיצוב מותג", prompt: `פעל כמומחה למיצוב מותגים.
+
+בהתבסס על המסר המרכזי שנבחר, נסח שורת מיצוב ברורה למותג.
+
+השורה צריכה להסביר:
+
+1. למי המותג מיועד
+2. מה הוא עוזר לקהל להשיג
+3. מה שונה בגישה שלו
+4. מדוע כדאי להאמין לו
+
+הצע 3 גרסאות:
+
+- אלגנטית
+- ישירה
+- פרימיום
+
+הימנע מ:
+
+- קלישאות
+- הבטחות מוגזמות
+- מילים כמו מהפכני, ייחודי, מושלם או הכי טוב
+- טענות שאין להן הוכחה
+
+בסוף, המלץ על גרסה אחת והסבר כיצד היא מתחברת לתובנה ולמתח.
+
+אל תכתוב עדיין הוקים.` },
+  { id: 9, title: "כתיבת הוקים חכמים", prompt: `פעל ככותב הוקים לסושיאל.
+
+השתמש רק בקהל, במתח, בתובנה ובמסר שאושרו בתהליך.
+
+צור 12 הוקים:
+
+- 3 מבוססי כאב או תסכול
+- 3 מבוססי תוצאה רצויה
+- 3 מבוססי ניגוד לאמונה קיימת
+- 3 מבוססי גילוי או הוכחה
+
+כל הוק חייב:
+
+1. להתמקד בנושא אחד
+2. לפתוח שאלה אחת ברורה
+3. להציג את ההקשר מיד
+4. להיות רלוונטי לקהל שנבחר
+5. להוביל למסר המרכזי
+6. להשתמש בשפה קצרה ופשוטה
+7. להימנע מקליקבייט
+8. להבטיח רק ערך שהתוכן יכול לקיים
+
+לכל הוק ציין:
+
+- הזווית
+- השאלה שנפתחת אצל הצופה
+- המתח שעליו הוא מבוסס
+- ההבטחה שהתוכן חייב לקיים
+- סוג ההוכחה הנדרש בהמשך
+
+בסוף, דרג את 5 ההוקים החזקים ביותר.` },
+  { id: 10, title: "ביקורת הוקים וסינון קליקבייט", prompt: `פעל כעורך בכיר לתוכן קצר וכמבקר הוקים.
+
+בדוק כל הוק לפי הקריטריונים הבאים:
+
+1. בהירות הנושא
+האם ברור מיד במה התוכן עוסק?
+
+2. רלוונטיות
+האם הקהל מבין שהתוכן מיועד לו?
+
+3. נושא אחד
+האם ההוק ממוקד ברעיון אחד?
+
+4. שאלה אחת
+האם נפתחת שאלה אחת ברורה?
+
+5. סקרנות
+האם יש סיבה אמיתית להמשיך?
+
+6. התאמה למסר
+האם ההוק מוביל לנקודת המבט של המותג?
+
+7. אמינות
+האם ההבטחה ניתנת להוכחה?
+
+8. סיכון לקליקבייט
+האם קיימת הגזמה, עמימות או הבטחה שלא תתקיים?
+
+דרג כל הוק מ-1 עד 5 בכל קריטריון.
+
+אל תשכתב מיד.
+
+תחילה הסבר מה עובד ומה לא עובד. לאחר מכן שפר רק את ההוקים החלשים.
+
+שמור על:
+
+- המסר המקורי
+- שפת המותג
+- בהירות
+- סקרנות רלוונטית
+- הבטחה אמינה` }
+];
+
+function buildFullPromptsText(list, headerTitle, promptWord) {
+  return `${headerTitle}\n\n` + list.map(p => `${promptWord} ${p.id}: ${p.title}\n\n${p.prompt}`).join("\n\n\n");
+}
+
+const ALL_PROMPTS_HE_TEXT = buildFullPromptsText(FULL_PROMPTS_HE, "10 פרומפטים אסטרטגיים לסושיאל", "פרומפט");
+const ALL_PROMPTS_EN_TEXT = buildFullPromptsText(ENGLISH_PROMPTS, "10 Strategic Prompts for Social Media", "Prompt");
+
 function promptCard(prompt, htmlBody) {
   const esc = prompt.replace(/"/g, "&quot;");
   return `<div class="card" style="flex-direction:column; justify-content:space-between;"><p class="mono p" style="direction:rtl; text-align:right;">${htmlBody}</p><button class="mono copy-btn" data-prompt="${esc}" style="background:#191714; color:#F3EEE4; padding:10px 24px; border:none; border-radius:24px; cursor:pointer; font-size:14px;">העתקה</button></div>`;
@@ -571,6 +842,13 @@ const SLIDES = [
 לאחר מכן שפר רק את ההוקים החלשים.
 
 שמור על המסר המקורי, שפת המותג, בהירות, סקרנות ואמינות.`, 10)}</div></div></div>`
+},
+
+/* 20 — All Prompts */
+{
+  label: "כל הפרומפטים", screen: "20",
+  notes: "Copy all 10 prompts at once, Hebrew or English.",
+  html: `<div class="slide-inner" style="background:#191714; padding:100px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;"><div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;"><div style="width:44px; height:2px; background:#E8385A;"></div><span style="font-size:24px; font-weight:700; letter-spacing:0.08em; color:#8a8276; text-transform:uppercase;" dir="rtl">סיכום</span><div style="width:44px; height:2px; background:#E8385A;"></div></div><h1 style="font-size:72px; color:#F3EEE4; font-weight:700; margin:0 0 24px; direction:rtl;" dir="rtl">כל 10 הפרומפטים במקום אחד</h1><p style="font-size:28px; color:#d8d2c6; margin:0 0 64px; direction:rtl;" dir="rtl">העתיקו את כל סדרת הפרומפטים בבת אחת, בעברית או באנגלית</p><div style="display:flex; gap:32px;"><button class="mono copy-all-en" type="button" data-all-en="${ALL_PROMPTS_EN_TEXT.replace(/"/g, "&quot;")}" style="background:#F3EEE4; color:#191714; padding:28px 56px; border:none; border-radius:100px; cursor:pointer; font-size:26px; font-weight:600;">Copy Prompts (ENG)</button><button class="mono copy-all-he" type="button" data-all-he="${ALL_PROMPTS_HE_TEXT.replace(/"/g, "&quot;")}" style="background:#E8385A; color:#F3EEE4; padding:28px 56px; border:none; border-radius:100px; cursor:pointer; font-size:26px; font-weight:600;">Copy Prompts (HEB)</button></div></div>`
 }
 
 ];
@@ -652,6 +930,40 @@ const SLIDES = [
     showToast._t = setTimeout(() => toast.classList.remove("show"), 1400);
   }
   wrap.addEventListener("click", (e) => {
+    // Handle "copy all" English prompts button
+    const copyAllEnBtn = e.target.closest(".copy-all-en");
+    if (copyAllEnBtn) {
+      const text = copyAllEnBtn.dataset.allEn;
+      const done = () => {
+        copyAllEnBtn.textContent = "Copied ✓";
+        showToast("Copied all 10 prompts");
+        setTimeout(() => { copyAllEnBtn.textContent = "Copy Prompts (ENG)"; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+      } else {
+        fallbackCopy(text, done);
+      }
+      return;
+    }
+
+    // Handle "copy all" Hebrew prompts button
+    const copyAllHeBtn = e.target.closest(".copy-all-he");
+    if (copyAllHeBtn) {
+      const text = copyAllHeBtn.dataset.allHe;
+      const done = () => {
+        copyAllHeBtn.textContent = "הועתק ✓";
+        showToast("כל 10 הפרומפטים הועתקו");
+        setTimeout(() => { copyAllHeBtn.textContent = "Copy Prompts (HEB)"; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+      } else {
+        fallbackCopy(text, done);
+      }
+      return;
+    }
+
     // Handle English copy button
     const copyEnBtn = e.target.closest(".copy-english");
     if (copyEnBtn) {
