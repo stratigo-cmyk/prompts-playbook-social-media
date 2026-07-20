@@ -545,9 +545,11 @@ function promptCardWithEnglish(hebrewPrompt, englishPromptId) {
   return `
     <div class="card" style="flex-direction:column; justify-content:space-between;">
       <p class="mono p" style="direction:rtl; text-align:right;">${hebrewPrompt}</p>
-      <div style="display:flex; gap:8px; align-self:flex-start; margin-top:16px;">
-        <button class="mono copy-english" type="button" data-prompt-en="${escEn}" style="background:#191714; color:#F3EEE4; padding:10px 24px; border:none; border-radius:24px; cursor:pointer; font-size:16px;">English</button>
-        <button class="mono copy-btn" data-prompt="${escHe}" style="background:#191714; color:#F3EEE4; padding:10px 24px; border:none; border-radius:24px; cursor:pointer; font-size:16px;">העתקה</button>
+      <div style="display:flex; align-items:center; gap:8px; align-self:flex-start; margin-top:16px;">
+        <!-- both buttons pinned to margin-top:0 so the stylesheet's .copy-btn margin-top:16px
+             doesn't push the Hebrew pill below the English one (row already spaces from the text) -->
+        <button class="mono copy-english" type="button" data-prompt-en="${escEn}" style="background:#191714; color:#F3EEE4; margin-top:0; padding:10px 24px; border:none; border-radius:24px; cursor:pointer; font-size:16px; min-width:110px; text-align:center;">English</button>
+        <button class="mono copy-btn" data-prompt="${escHe}" style="background:#191714; color:#F3EEE4; margin-top:0; padding:10px 24px; border:none; border-radius:24px; cursor:pointer; font-size:16px; min-width:110px; text-align:center;">העתקה</button>
       </div>
     </div>
   `;
